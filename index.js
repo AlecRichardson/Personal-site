@@ -16,6 +16,17 @@ app.use(express.static("client/build"));
 
 app.post("/api/form", (req, res) => {
   console.log(req.body);
+
+  let transporter = nodemailer.createTransport({
+    host: "smtp.office365.com",
+    port: 587,
+    secure: false,
+    auth: {
+      user: "alec.richardson@mail.missouri.edu",
+      pass: process.env.EMAILPASSWORD
+    }
+  });
+
   let mailOptions = {
     from: req.body.email, // sender address
     to: "alec.richardson@mail.missouri.edu", // list of receivers
