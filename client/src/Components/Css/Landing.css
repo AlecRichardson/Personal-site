@@ -1,0 +1,21 @@
+.bottom-right {
+  position: absolute;
+  left: 15%;
+  bottom: 20%;
+  color: white;
+}
+
+.name {
+  font-size: 60px;
+  margin: 0;
+}
+
+.desc {
+  font-size: 20px;
+  margin-bottom: 20%;
+}
+
+.learn-more {
+  color: white;
+  font-size: 40px;
+}

@@ -1,0 +1,38 @@
+.background {
+  height: 200px;
+  width: 100%;
+  background-color: #161616;
+  margin-top: 100px;
+}
+.footer-container {
+  padding-top: 30px;
+  color: white;
+  font-size: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.column-1 {
+  text-align: left;
+  width: 33%;
+}
+.column-2 {
+  text-align: center;
+  width: 33%;
+}
+.column-3 {
+  text-align: right;
+  width: 33%;
+}
+.selfie {
+  width: 150px;
+  height: 150px;
+}
+.links {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  color: white;
+  cursor: pointer;
+}
