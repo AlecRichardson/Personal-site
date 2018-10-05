@@ -13,6 +13,10 @@ const app = express();
 app.use(express.json());
 app.use(express.static("client/build"));
 
+app.post("/api/form", (req, res) => {
+  console.log(req.body);
+});
+
 app.listen(6000, () => console.log("server running"));
 
 https
