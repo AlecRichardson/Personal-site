@@ -12,7 +12,8 @@ export default class Contact extends Component {
     this.state = {
       email: "",
       subject: "",
-      message: ""
+      message: "",
+      msg: ""
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -38,6 +39,7 @@ export default class Contact extends Component {
   };
 
   render() {
+    const { msg } = this.state;
     return (
       <Container className="contact-container" textAlign="center">
         <h1 className="title"> Contact. </h1>
