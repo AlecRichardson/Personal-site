@@ -34,7 +34,7 @@ export default class Contact extends Component {
       subject,
       message
     });
-
+    console.log(form);
     this.setState({ email: "", subject: "", message: "" });
   };
 
