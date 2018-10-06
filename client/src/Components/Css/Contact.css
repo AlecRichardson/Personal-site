@@ -24,6 +24,7 @@
 .invalid {
   color: red;
 }
-.message-field {
-  height: 200px;
+.success {
+  color: green;
+  text-align: center;
 }

@@ -38,7 +38,7 @@ export default class Contact extends Component {
       })
       .then(response => {
         this.setState({ success: response.data });
-        this.setState({ email: "", subject: "", message: "" });
+        this.setState({ email: "", subject: "", message: "", errors: {} });
       })
       .catch(err => {
         this.setState({ errors: err.response.data });
@@ -102,11 +102,14 @@ export default class Contact extends Component {
               <Button type="submit" color="blue">
                 Submit
               </Button>
-              <div>
-                {this.state.success
-                  ? "Your email has been sent successfully."
-                  : ""}
-              </div>
+
+              {this.state.success ? (
+                <div className="success">
+                  Your email has been sent successfully.
+                </div>
+              ) : (
+                ""
+              )}
             </Form>
           </Container>
         </div>
