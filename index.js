@@ -34,7 +34,7 @@ app.post("/api/form", (req, res) => {
     service: "gmail",
     secure: false,
     auth: {
-      user: "alecwrichardson@gmail.com",
+      user: "contactfromserver@gmail.com",
       pass: "98Integra"
     },
     tls: {
@@ -43,10 +43,11 @@ app.post("/api/form", (req, res) => {
   });
 
   let mailOptions = {
-    from: req.body.email, // sender address
-    to: "alec.richardson@mail.missouri.edu alecwrichardson@gmail.com", // list of receivers
-    subject: req.body.subject, // Subject line
-    text: req.body.message, // plain text body
+    from: req.body.email,
+    to:
+      "alec.richardson@mail.missouri.edu, alecwrichardson@gmail.com, alecrich22@aol.com",
+    subject: req.body.subject,
+    text: req.body.message,
     html: output
   };
 
