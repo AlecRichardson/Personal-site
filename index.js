@@ -16,23 +16,29 @@ app.use(express.static("client/build"));
 
 app.post("/api/form", (req, res) => {
   console.log(req.body);
+  const output = `
+    <h3>Response email:</h3>
+    <p>${req.body.email}</p>
+  `;
 
-  let transporter = nodemailer.createTransport({
-    host: "smtp.office365.com",
-    port: 587,
+  var transporter = nodemailer.createTransport({
+    service: "gmail",
     secure: false,
     auth: {
-      user: "alec.richardson@mail.missouri.edu",
-      pass: process.env.EMAILPASSWORD
+      user: "alecwrichardson@gmail.com",
+      pass: "98Integra"
+    },
+    tls: {
+      rejectUnauthorized: false
     }
   });
 
   let mailOptions = {
     from: req.body.email, // sender address
-    to: "alec.richardson@mail.missouri.edu", // list of receivers
+    to: "alec.richardson@mail.missouri.edu alecwrichardson@gmail.com", // list of receivers
     subject: req.body.subject, // Subject line
     text: req.body.message, // plain text body
-    html: "<b>Hello world?</b>" // html body
+    html: output
   };
 
   transporter.sendMail(mailOptions, (error, info) => {
