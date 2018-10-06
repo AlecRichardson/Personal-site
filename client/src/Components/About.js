@@ -55,7 +55,7 @@ export default class About extends Component {
           >
             <Modal.Header>Resume</Modal.Header>
             <Modal.Content>
-              <Image centered="true" src={resume} />
+              <Image centered src={resume} />
             </Modal.Content>
           </Modal>
         </div>

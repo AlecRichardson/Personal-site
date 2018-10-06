@@ -36,3 +36,18 @@ a {
   color: white;
   cursor: pointer;
 }
+
+@media only screen and (max-width: 475px) {
+  .column-1 {
+    width: 0%;
+    opacity: 0;
+  }
+  .column-2 {
+    width: 50%;
+    text-align: center;
+  }
+  .column-3 {
+    width: 50%;
+    text-align: center;
+  }
+}

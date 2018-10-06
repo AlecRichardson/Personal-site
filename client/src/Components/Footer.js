@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./Css/Footer.css";
 
-import { Container, Menu, Image } from "semantic-ui-react";
+import { Container, Image } from "semantic-ui-react";
 
 import image from "../images/alecsmall.jpg";
 

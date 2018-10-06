@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+// import Hamburger from "react-hamburgers";
 
 import "./Css/Nav.css";
 
@@ -9,7 +10,7 @@ export default class Nav extends Component {
     this.home = 0;
 
     this.state = {
-      activeItem: "home",
+      active: false,
       isTop: true
     };
   }
@@ -25,26 +26,6 @@ export default class Nav extends Component {
         .getBoundingClientRect().y;
       console.log(this.home);
     });
-
-    // var about = document
-    //   .querySelector(".about-container")
-    //   .getBoundingClientRect().y;
-    // var portfolio = document
-    //   .querySelector(".portfolio-container")
-    //   .getBoundingClientRect().y;
-    // var contact = document
-    //   .querySelector(".contact-container")
-    //   .getBoundingClientRect().y;
-    // console.log(
-    //   "home",
-    //   this.home,
-    //   "about",
-    //   about,
-    //   "portfolio",
-    //   portfolio,
-    //   "contact",
-    //   contact
-    // );
   };
 
   getClass = () => {};
@@ -59,6 +40,14 @@ export default class Nav extends Component {
     console.log(this.home);
     return (
       <nav className={this.state.isTop ? "nav" : "nav  nav-background"}>
+        {/* <Hamburger
+          className="hamburger"
+          active={this.state.active}
+          type="slider"
+          onClick={() => this.setState({ active: !this.state.active })}
+        />
+
+        <button className="hamburger hamburger--boring" type="button" /> */}
         <ul className="nav-list">
           <li className={this.home > -999 ? "nav-item" : "nav-item"}>
             <a onClick={() => this.handleMenuClick(".background-image")}>

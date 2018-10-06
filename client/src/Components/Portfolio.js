@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Container, Divider, Button, Reveal } from "semantic-ui-react";
+import { Container, Divider, Button } from "semantic-ui-react";
 
 import "./Css/Portfolio.css";
 
