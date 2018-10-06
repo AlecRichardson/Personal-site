@@ -46,6 +46,8 @@ app.post("/api/form", (req, res) => {
       return console.log(error);
     }
     console.log("Message sent: %s", info.messageId);
+
+    res.render("contact", { msg: "Email has been sent!" });
   });
 });
 
