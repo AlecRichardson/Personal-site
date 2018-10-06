@@ -12,8 +12,8 @@ export default class Contact extends Component {
     this.state = {
       email: "",
       subject: "",
-      message: "",
-      msg: ""
+      message: ""
+      // msg: ""
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -29,17 +29,24 @@ export default class Contact extends Component {
 
     const { email, subject, message } = this.state;
 
-    const form = axios.post("/api/form", {
-      email,
-      subject,
-      message
-    });
-    console.log(form);
+    const form = axios
+      .post("/api/form", {
+        email,
+        subject,
+        message
+      })
+      .then(response => {
+        console.log(response.data);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+
     this.setState({ email: "", subject: "", message: "" });
   };
 
   render() {
-    const { msg } = this.state;
+    // const { msg } = this.state;
     return (
       <Container className="contact-container" textAlign="center">
         <h1 className="title"> Contact. </h1>
@@ -57,6 +64,7 @@ export default class Contact extends Component {
                   placeholder="Email"
                   type="email"
                   name="email"
+                  value={this.state.email}
                   onChange={this.handleChange}
                 />
               </Form.Field>
@@ -66,6 +74,7 @@ export default class Contact extends Component {
                   placeholder="Subject"
                   type="text"
                   name="subject"
+                  value={this.state.subject}
                   onChange={this.handleChange}
                 />
               </Form.Field>
@@ -75,6 +84,7 @@ export default class Contact extends Component {
                   placeholder="message"
                   type="textarea"
                   name="message"
+                  value={this.state.message}
                   onChange={this.handleChange}
                 />
               </Form.Field>
@@ -82,7 +92,7 @@ export default class Contact extends Component {
               <Button type="submit" color="blue">
                 Submit
               </Button>
-              <div>{{ msg }}</div>
+              {/* <div>{{ msg }}</div> */}
             </Form>
           </Container>
         </div>

@@ -10,12 +10,21 @@ const options = {
   ca: fs.readFileSync("/home/awrnnd/server/encryption/intermediate.crt")
 };
 
+// Load validation
+const validateContactInput = require("./Validation/contact");
+
 const app = express();
 app.use(express.json());
 app.use(express.static("client/build"));
 
 app.post("/api/form", (req, res) => {
-  console.log(req.body);
+  const { errors, isValid } = validateContactInput(req.body);
+
+  if (!isValid) {
+    console.log(errors);
+    return res.status(400).json(errors);
+  }
+
   const output = `
     <h3>Response email:</h3>
     <p>${req.body.email}</p>
@@ -47,7 +56,7 @@ app.post("/api/form", (req, res) => {
     }
     console.log("Message sent: %s", info.messageId);
 
-    res.render("contact", { msg: "Email has been sent!" });
+    res.json({ success: true });
   });
 });
 
