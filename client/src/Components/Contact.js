@@ -45,12 +45,8 @@ export default class Contact extends Component {
         message
       })
       .then(response => {
-        this.setState({ loader: response.data.loader });
-        console.log(response.data);
         this.setState({ success: response.data });
         this.setState({ email: "", subject: "", message: "", errors: {} });
-        console.log(response.data);
-        this.setState({ loader: response.data.loader });
       })
       .catch(err => {
         this.setState({ errors: err.response.data });
@@ -114,7 +110,7 @@ export default class Contact extends Component {
               <Button type="submit" color="blue">
                 Submit
               </Button>
-              {this.state.loader ? <Loader active inline="centered" /> : ""}
+
               {this.state.success ? (
                 <div className="success">
                   Your email has been sent successfully.

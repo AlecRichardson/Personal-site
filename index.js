@@ -25,8 +25,6 @@ app.post("/api/form", (req, res) => {
     return res.status(400).json(errors);
   }
 
-  res.json({ loader: true });
-
   const output = `
     <h3>Response email:</h3>
     <p>${req.body.email}</p>
@@ -59,7 +57,7 @@ app.post("/api/form", (req, res) => {
     }
     console.log("Message sent: %s", info.messageId);
 
-    res.json({ success: true, loader: false });
+    res.json({ success: true });
   });
 });
 
