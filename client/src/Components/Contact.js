@@ -3,7 +3,7 @@ import axios from "axios";
 
 import "./Css/Contact.css";
 
-import { Container, Divider, Form, Button } from "semantic-ui-react";
+import { Container, Divider, Form, Button, Input } from "semantic-ui-react";
 
 export default class Contact extends Component {
   constructor(props) {
@@ -12,8 +12,9 @@ export default class Contact extends Component {
     this.state = {
       email: "",
       subject: "",
-      message: ""
-      // msg: ""
+      message: "",
+      success: null,
+      errors: {}
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -36,47 +37,53 @@ export default class Contact extends Component {
         message
       })
       .then(response => {
-        console.log(response.data);
+        this.setState({ success: response.data });
+        this.setState({ email: "", subject: "", message: "" });
       })
       .catch(err => {
-        console.log(err);
+        this.setState({ errors: err.response.data });
       });
-
-    this.setState({ email: "", subject: "", message: "" });
   };
 
   render() {
-    // const { msg } = this.state;
+    const { errors } = this.state;
     return (
       <Container className="contact-container" textAlign="center">
         <h1 className="title"> Contact. </h1>
         <Divider />
         <p className="desc">
           Have any questions about employment or business opportunities? Feel
-          free to send an email at admin@alecrichardson.me
+          free to send an email at alecwrichardson@gmail.com
         </p>
         <div className="email">
           <Container>
             <Form onSubmit={this.handleEmailSubmit}>
               <Form.Field>
                 <label>Email</label>
-                <input
+                <Input
                   placeholder="Email"
-                  type="email"
                   name="email"
                   value={this.state.email}
                   onChange={this.handleChange}
+                  className={errors.email ? "error" : ""}
                 />
+                <div className="invalid">
+                  {this.state.errors.email ? this.state.errors.email : ""}
+                </div>
               </Form.Field>
               <Form.Field>
                 <label>Subject</label>
-                <input
+                <Input
                   placeholder="Subject"
                   type="text"
                   name="subject"
                   value={this.state.subject}
                   onChange={this.handleChange}
+                  className={errors.subject ? "error" : ""}
                 />
+                <div className="invalid">
+                  {this.state.errors.subject ? this.state.errors.subject : ""}
+                </div>
               </Form.Field>
               <Form.Field>
                 <label>Message</label>
@@ -87,12 +94,19 @@ export default class Contact extends Component {
                   value={this.state.message}
                   onChange={this.handleChange}
                 />
+                <div className="invalid">
+                  {this.state.errors.message ? this.state.errors.message : ""}
+                </div>
               </Form.Field>
 
               <Button type="submit" color="blue">
                 Submit
               </Button>
-              {/* <div>{{ msg }}</div> */}
+              <div>
+                {this.state.success
+                  ? "Your email has been sent successfully."
+                  : ""}
+              </div>
             </Form>
           </Container>
         </div>
