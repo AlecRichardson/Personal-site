@@ -3,7 +3,14 @@ import axios from "axios";
 
 import "./Css/Contact.css";
 
-import { Container, Divider, Form, Button, Input } from "semantic-ui-react";
+import {
+  Container,
+  Divider,
+  Form,
+  Button,
+  Input,
+  Loader
+} from "semantic-ui-react";
 
 export default class Contact extends Component {
   constructor(props) {
@@ -14,6 +21,7 @@ export default class Contact extends Component {
       subject: "",
       message: "",
       success: null,
+      loader: false,
       errors: {}
     };
 
@@ -37,8 +45,11 @@ export default class Contact extends Component {
         message
       })
       .then(response => {
+        // this.setState({loader: reesponse.data.loader});
+        console.log(response.data);
         this.setState({ success: response.data });
         this.setState({ email: "", subject: "", message: "", errors: {} });
+        console.log(response.data);
       })
       .catch(err => {
         this.setState({ errors: err.response.data });

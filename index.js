@@ -25,6 +25,8 @@ app.post("/api/form", (req, res) => {
     return res.status(400).json(errors);
   }
 
+  res.json({ loader: true });
+
   const output = `
     <h3>Response email:</h3>
     <p>${req.body.email}</p>
