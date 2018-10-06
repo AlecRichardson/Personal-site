@@ -96,7 +96,7 @@ export default class Contact extends Component {
               <Form.Field>
                 <label>Message</label>
                 <textarea
-                  placeholder="message"
+                  placeholder="Message"
                   type="textarea"
                   name="message"
                   value={this.state.message}
