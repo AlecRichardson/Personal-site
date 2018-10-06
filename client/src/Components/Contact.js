@@ -33,6 +33,8 @@ export default class Contact extends Component {
       subject,
       message
     });
+
+    this.setState({ email: "", subject: "", message: "" });
   };
 
   render() {
@@ -78,6 +80,7 @@ export default class Contact extends Component {
               <Button type="submit" color="blue">
                 Submit
               </Button>
+              <div>{{ msg }}</div>
             </Form>
           </Container>
         </div>
