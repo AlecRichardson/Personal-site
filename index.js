@@ -59,7 +59,7 @@ app.post("/api/form", (req, res) => {
     }
     console.log("Message sent: %s", info.messageId);
 
-    res.json({ success: true });
+    res.json({ success: true, loader: false });
   });
 });
 
