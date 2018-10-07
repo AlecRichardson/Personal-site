@@ -35,7 +35,7 @@ app.post("/api/form", (req, res) => {
     secure: false,
     auth: {
       user: "contactfromserver@gmail.com",
-      pass: "98Integra"
+      pass: process.env.KEY
     },
     tls: {
       rejectUnauthorized: false
