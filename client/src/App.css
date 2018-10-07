@@ -62,4 +62,19 @@
     font-size: 40px;
     opacity: 1;
   }
+  /* .background-image {
+    background-attachment: 
+  } */
+}
+
+@media only screen and (max-width: 475px) {
+  .background-image {
+    background-attachment: inherit;
+  }
+  .background-image-2 {
+    background-attachment: inherit;
+  }
+  .background-image-3 {
+    background-attachment: inherit;
+  }
 }
