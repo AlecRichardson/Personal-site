@@ -61,7 +61,12 @@ export default class Portfolio extends Component {
             <div className="hover">
               <h1 className="outline">Blackjack</h1>
               <div className="links">
-                <Button content="Learn more" disabled />
+                <a
+                  href="https://github.com/AlecRichardson/Blackjack"
+                  target="_blank"
+                >
+                  <Button content="Learn more" />
+                </a>
                 <Button content="View project" disabled />
               </div>
             </div>
@@ -84,7 +89,12 @@ export default class Portfolio extends Component {
             <div className="hover">
               <h1 className="outline">CPU Monitor</h1>
               <div className="links">
-                <Button content="Learn more" disabled />
+                <a
+                  href="https://github.com/AlecRichardson/CPU-Monitor"
+                  target="_blank"
+                >
+                  <Button content="Learn more" />
+                </a>
                 <Button content="View project" disabled />
               </div>
             </div>
