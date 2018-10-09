@@ -1,5 +1,7 @@
+require("dotenv").config();
 var express = require("express");
 const nodemailer = require("nodemailer");
+
 
 const https = require("https"),
   fs = require("fs");
@@ -12,7 +14,7 @@ const options = {
 
 // Load validation
 const validateContactInput = require("./Validation/contact");
-
+console.log(process.env.NM_UN);
 const app = express();
 app.use(express.json());
 app.use(express.static("client/build"));
@@ -26,16 +28,17 @@ app.post("/api/form", (req, res) => {
   }
 
   const output = `
-    <h3>Response email:</h3>
-    <p>${req.body.email}</p>
+    <h3>From: ${req.body.email}</h3>
+    <h5>Subject: ${req.body.subject}</h5>
+    <p>Message: ${req.body.message}</p>
   `;
 
   var transporter = nodemailer.createTransport({
     service: "gmail",
     secure: false,
     auth: {
-      user: "contactfromserver@gmail.com",
-      pass: process.env.KEY
+      user: process.env.NM_UN,
+      pass: process.env.NM_PW
     },
     tls: {
       rejectUnauthorized: false
@@ -44,8 +47,7 @@ app.post("/api/form", (req, res) => {
 
   let mailOptions = {
     from: req.body.email,
-    to:
-      "alec.richardson@mail.missouri.edu, alecwrichardson@gmail.com, alecrich22@aol.com",
+    to: process.env.NM_R,
     subject: req.body.subject,
     text: req.body.message,
     html: output
@@ -53,7 +55,7 @@ app.post("/api/form", (req, res) => {
 
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
-      return console.log(error);
+      return res.status(400).json(error);
     }
     console.log("Message sent: %s", info.messageId);
 
